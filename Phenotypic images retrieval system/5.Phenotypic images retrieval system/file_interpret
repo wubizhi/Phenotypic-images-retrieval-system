@@ -1,0 +1,64 @@
+下载数据文件：
+	可以从这个链接获得：
+	将一下这些文件和eval_result.py,Search_Net.py和TAIR_Net.py放在同一文件夹下
+	tair_net_encoder_30
+		TAIR_Net的编码器参数文件
+	tair_net_autoencoder_30
+		TAIR_Net的编码器和解码器参数文件
+	piam_tair_net_seg.npy
+		经过TAIR_Net分割后的图片
+	piam_tair_map_data.npy
+		未经TAIR_Net分割前的图片
+	piam_tair_net_seg_name.txt
+		TAIR_Net分割的图像名
+	piam_match_gene.txt
+		图片文件对应的AT信息
+	AT_GO_Table.txt
+		AT对应的GO信息
+	encoder_400
+		Search_Net的编码器参数文件
+	autoencoder_400
+		Search_Net的解码器参数文件
+	tair_net_for_search_v2.npy
+		用piam_tair_net_seg.npy训练Search_Net得到的特征库
+
+如何运行：
+	1.保证你的运行环境安装了Keras，并且是以Tensorflow为backend的。
+	2.从链接下载数据文件，与python文件放在同一个文件夹中
+	3.在命令行直接：python eval_result.py，这个是对"piam_img_test"中每张图片做检索
+
+得到的结果：
+	文件夹--result_figure
+		由eval_result.py生成的，保存结果检索图
+	文件夹--result_table
+		由eval_result.py生成，保存检索结果的CSV文件
+	img_file.txt
+		由eval_result.py生成，保存测试的图片文件名，使用追加方式，重新运行要删掉该文件
+	share_num.txt
+		由eval_result.py生成，保存GO重叠的个数，使用追加方式，重新运行要删除该文件
+
+程序说明：
+	TAIR_Net.py 
+		用法1（单张图片的分割）：
+			python TAIR_Net.py -i "test.jpg" 
+				得到"test_seg.jpg"
+		用法2（对一个文件夹中的.jpg图片进行分割）：
+			python TAIR_Net.py -f "piam_img_test" 
+				得到文件夹"piam_img_test_seg"
+	Search_Net.py
+		用法（单张图片的表型检索）：
+			python Search_Net.py -i "test.jpg"
+				得到”result.jpg“,table.csv,table3.csv
+
+	eval_result.py
+		用来评价Search_Net检索的好坏，这个只针对拟南芥物种的评测，并且图片要保存在一个文件夹中，
+		名称要和”piam_img_test“的一样，如果有，请在eval_reuslt.py中的
+			addrs = glob.glob('./piam_img_test/*.jpg')
+		piam_img_test改成你的文件夹名字
+	
+
+		
+		
+
+
+
