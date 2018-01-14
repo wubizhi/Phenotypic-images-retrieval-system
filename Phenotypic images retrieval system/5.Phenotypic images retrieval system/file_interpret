@@ -1,5 +1,5 @@
 下载数据文件：
-	可以从这个链接获得：
+	可以从这个链接获得：https://pan.baidu.com/s/1dvLJiu
 	将一下这些文件和eval_result.py,Search_Net.py和TAIR_Net.py放在同一文件夹下
 	tair_net_encoder_30
 		TAIR_Net的编码器参数文件
